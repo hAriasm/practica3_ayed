@@ -16,7 +16,7 @@ class Rectangle {
 
     // verifica si este objeto contiene un objeto Punto
     contains(point) {
-        if (point.x > (this.x - w) && point.x < (this.x + w) && point.y > (this.y - h) && point.y < (this.y + h)) {
+        if (point.x > (this.x - this.w) && point.x < (this.x + this.w) && point.y > (this.y - this.h) && point.y < (this.y + this.h)) {
             return true;
         }
         return false;
@@ -24,7 +24,7 @@ class Rectangle {
 
     // verifica si este objeto se intersecta con otro objeto Rectangle
     intersects(range) {
-        if (point.x == (this.x - w) || point.x == (this.x + w) || point.y == (this.y - h) || point.y == (this.y + h)) {
+        if (range.x == (this.x - this.w) || range.x == (this.x + this.w) || range.y == (this.y - this.h) || range.y == (this.y + this.h)) {
             return true;
         }
         return false;
