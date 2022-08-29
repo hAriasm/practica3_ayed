@@ -26,8 +26,8 @@ class Rectangle {
     }
     return false;
   }
+}
 
-<<<<<<< .mine
   // verifica si este objeto se intersecta con otro objeto Rectangle
   intersects(range) {
     if (
@@ -35,25 +35,19 @@ class Rectangle {
       point.x == this.x + w ||
       point.y == this.y - h ||
       point.y == this.y + h
-    ) {
+    ) 
       return true;
-=======
-    // verifica si este objeto contiene un objeto Punto
+        }
+            // verifica si este objeto contiene un objeto Punto
     contains(point) {
         if (point.x > (this.x - this.w) && point.x < (this.x + this.w) && point.y > (this.y - this.h) && point.y < (this.y + this.h)) {
             return true;
         }
         return false;
 
-
-
->>>>>>> .theirs
+ 
     }
-    return false;
-  }
-}
-
-<<<<<<< .mine
+  
 class QuadTree {
   constructor(boundary, n) {
     this.boundary = boundary; // Rectangle
@@ -61,7 +55,7 @@ class QuadTree {
     this.points = []; // vector , almacena los puntos a almacenar
     this.divided = false;
   }
-
+}
   // divide el quadtree en 4 quadtrees
   subdivide() {
     // Algoritmo
@@ -106,7 +100,8 @@ class QuadTree {
       this.northwest.show();
       this.southeast.show();
       this.southwest.show();
-=======
+    }
+  }
     // verifica si este objeto se intersecta con otro objeto Rectangle
     intersects(range) {
         if (range.x == (this.x - this.w) || range.x == (this.x + this.w) || range.y == (this.y - this.h) || range.y == (this.y + this.h)) {
@@ -114,57 +109,5 @@ class QuadTree {
         }
         return false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> .theirs
     }
 
-    for (let p of this.points) {
-      strokeWeight(4);
-      point(p.x, p.y);
-    }
-  }
-}
