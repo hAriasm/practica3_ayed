@@ -62,9 +62,7 @@
 	\begin{center}	
 		\fontsize{17}{17} \textbf{ Práctica \cspracnr}
 	\end{center}
-	%\centerline{\textbf{\underline{\Large Título: Informe de revisión del estado del arte}}}
-	%\vspace*{0.5cm}
-	
+ 
 
 	\begin{table}[h]
 		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
@@ -99,189 +97,22 @@
         		\end{itemize}		
         	\end{itemize}
     \section{Repositorio GitHub}
-           URL Github: \href{https://github.com/hAriasm/Practica2_ayed}{Repositorio Práctica 2 AyED}
+           URL Github: \href{https://github.com/hAriasm/practica3_ayed}{Repositorio Práctica 2 AyED}
 	\section{Estructuras de Datos}
-   \subsection{AVL}
+    \subsection{AVL}
         \paragraph{}
         El árbol AVL recibe su nombre de las iniciales  de sus inventores, Georgii Adelson-Velskii y Yevgeniy Landis. Dieron a conocer esto mediante la publicación de un artículo en 1962, " Un algoritmo para organizar la información" (" Un algoritmo para organizar la información").
-
-        Un árbol AVL es un árbol de búsqueda binaria que tiene una altura equilibrada: para cada nodo x, las alturas de los subárboles izquierdo y derecho de x difieren en 1 como máximo. Para implementar un árbol AVL, mantenemos un atributo adicional en cada nodo: x.h es la altura del nodo x. Como para cualquier otro árbol binario de búsqueda T, asumimos que T.root apunta al nodo raíz.
-
-        El árbol AVL siempre está equilibrado de  modo que para todos los nodos, la altura de la rama izquierda no difiera en más de una unidad de la altura de la rama derecha o viceversa. Gracias a esta forma de equilibrio, la complejidad de una búsqueda en uno de estos árboles se mantiene siempre en el orden de complejidad O(log n). El factor de equilibrio puede almacenarse directamente en cada nodo o calcularse a partir de la altura de los subárboles.
-
-        Para lograr este equilibrio, la inserción y eliminación de  nodos debe realizarse de manera especial. Si la condición de equilibrio se rompe al realizar una operación de inserción o eliminación, se debe realizar una serie de rotaciones de  nodos.
-
-
-         \subsubsection{Resultados del experimento}
-         \begin{itemize}
-            \item En la figura \ref{fig:avlBusqueda} mostramos la búsqueda del nodo 22 con resultado de no encontrado
-           \item En la figura \ref{fig:avlBusqueda} mostramos la búsqueda del nodo 21 con resultado de "Se encontró el nodo".
-           \item En la figura \ref{fig:avlBusqueda} mostramos el máximo y  mínimo valor .
-           \item En la figura \ref{fig:avlInicial} mostramos nuestro árbol inicial con 11 nodos.
-           \item En la figura \ref{fig:avlIsertion} mostramos el árbol luego de insertar un nodo nuevo.
-           \item En la figura \ref{fig:avldelete} mostramos luego de eliminar un nodo.
-           \item En la figura \ref{fig:avldelete2} mostramos luego de eliminar el nodo raíz.
-         \end{itemize}
-
-         \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=\textwidth]{img/busquedaAVL.png}
-              \caption{Árbol AVL búsqueda variada}
-              \label{fig:avlBusqueda}
-            \end{figure}
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/avltree.png}
-              \caption{Árbol AVL inicial}
-              \label{fig:avlInicial}
-            \end{figure}
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/avltree.png}
-              \caption{Árbol AVL inicial}
-              \label{fig:avlInicial}
-            \end{figure}
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/avltree-insertion.png}
-              \caption{Árbol AVL con inserción }
-                \label{fig:avlIsertion}
-            \end{figure}
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/avltree-deletion.png}
-              \caption{Árbol AVL con eliminación nodo}
-            \label{fig:avldelete}
-            \end{figure}
-             \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/avltree-deletion-2.png}
-              \caption{Árbol AVL con eliminación de la raíz}
-              \label{fig:avldelete2}
-            \end{figure}
-        \subsection{B-Tree}
-            \paragraph{}
-            La idea tras los árboles-B es que los nodos internos deben tener un número variable de nodos hijo dentro de un rango predefinido. Cuando se inserta o se elimina un dato de la estructura, la cantidad de nodos hijo varía dentro de un nodo. Para que siga manteniéndose el número de nodos dentro del rango predefinido, los nodos internos se juntan o se parten. Dado que se permite un rango variable de nodos hijo, los árboles-B no necesitan rebalancearse tan frecuentemente como los árboles binarios de búsqueda auto-balanceables. Pero, por otro lado, pueden desperdiciar memoria, porque los nodos no permanecen totalmente ocupados. Los límites (uno superior y otro inferior) en el número de nodos hijo son definidos para cada implementación en particular
-            Un árbol-B se mantiene balanceado porque requiere que todos los nodos hoja se encuentren a la misma altura.
-            Operaciones Básicas
-                   \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=\textwidth]{img/btree22.png}
-              \caption{Gráfica B-tree}
-              \label{fig:avlBusqueda}
-            \end{figure}
-            \textbf{Buscar:}
-            La búsqueda es similar a la de los árboles binarios. Básicamente, empieza comprobando el nodo raíz, y si este es el que se busca, termina la operación. Si no lo es, mueve el puntero a su hijo izquierdo o al derecho, dependiendo de si el dato que se busca es menor o mayor del que contiene el nodo padre. De esta forma continua hasta encontrar el dato o terminar de recorrer el árbol sin encontrarlo. Este proceso es recursivo, puesto que el puntero se mueve hasta un nodo hijo, y podemos considerar a este como el nodo raíz de un nuevo árbol. El costo computacional es O($Log_2n$))
-            \textbf{Insertar:}
-            Las inserciones se hacen en los nodos hoja.
-            \begin{itemize}
-              \item  	Realizando una búsqueda en el árbol, se halla el nodo hoja en el cual debería ubicarse el nuevo elemento.
-              \item Si el nodo hoja tiene menos elementos que el máximo número de elementos legales, entonces hay lugar para uno más. Inserte el nuevo elemento en el nodo, respetando el orden de los elementos.
-              \item De otra forma, el nodo debe ser dividido en dos nodos.
-            \end{itemize}
-
-                \textbf{Eliminar:}
-                La eliminación de un elemento es directa si no se requiere corrección para garantizar sus propiedades. Hay dos estrategias populares para eliminar un nodo de un árbol B.
-                \begin{itemize}
-                  \item localizar y eliminar el elemento, y luego corregir, o
-                  \item hacer una única pasada de arriba abajo por el árbol, pero cada vez que se visita un nodo, reestructurar el árbol para que cuando se encuentre el elemento a ser borrado, pueda eliminarse sin necesidad de continuar reestructurando
-                \end{itemize}
-                Se pueden dar dos problemas al eliminar elementos. Primero, el elemento puede ser un separador de un nodo interno. Segundo, puede suceder que al borrar el elemento número de elementos del nodo quede debajo de la cota mínima
-
-            \subsubsection{Resultados del experimento}
-
-
-
-    \section{Binary Search Tree}
-
-        Los árboles binarios son estructuras de datos muy similares a las listas doblemente enlazadas, en el sentido que tienen dos punteros que apuntan a otros elementos, pero no tienen una estructura lógica de tipo lineal o secuencial como aquellas, sino ramificada.  Tienen aspecto de árbol, de ahí su nombre.
-
-        Un árbol binario es una estructura de datos no lineal en la que cada nodo puede apuntar a uno o máximo a dos nodos. También se suele dar una definición recursiva que indica que es una estructura compuesta por un dato y dos árboles. Esto son definiciones simples. Este tipo de árbol se caracteriza porque tienen un vértice principal y de él se desprenden dos ramas. La rama izquierda y la rama derecha a las que también se les conoce como subárboles.
-
-        Una representación gráfica de la estructura general de un árbol binario se puede visualizar en la figura \ref{fig:b-tree}, que se presenta a continuación.
-        \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/estructura_arbol_binario.png}
-              \caption{Gráfica B-tree}
-              \label{fig:b-tree}
-            \end{figure} 
-        \subsection{Resultados}
-        \begin{itemize}
-          \item Árbol Principal \\
-         En la siguiente imagen se puede observar la creación del árbol principal después de ejecutar el código.
-                  
-          \item Insertar dos nodos \\
-            Como resultado de la operación de Insertar, se ha añadido los nodos "93" y "105" lo cual se muestra en la en la figura \ref{fig:btree_insertando_2_nodos}.
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/btree_insertando_2_nodos.png}
-              \caption{btree insertando 2 nodos}
-              \label{fig:btree_insertando_2_nodos}
-            \end{figure}  
-          \item  Borrar un nodo con dos hijos
-            En la siguiente imagen se muestra el árbol, luego de borrar el nodo padre "99" se muestra en la en la figura \ref{fig:btree_delete_nodo_padre_2_hijos}.
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/btree_delete_nodo_padre_2_hijos.png}
-              \caption{btree delete 2 nodos}
-              \label{fig:btree_delete_nodo_padre_2_hijos}
-            \end{figure} 
-            
-            \item Borrar nodo raíz \\
-            A continuación se muestra el árbol, después de ejecutar la operación de borrar el nodo raíz "41" se muestra en la en la figura \ref{fig:btree_delete_nodo_raiz}.
-               \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/btree_delete_nodo_raiz.png}
-              \caption{btree delete nodo padre}
-              \label{fig:btree_delete_nodo_raiz}
-            \end{figure}  
-            \item Búsqueda de un nodo \\
-                En la siguiente imagen se muestra el resultado de la búsqueda del nodo "91" se muestra en la en la figura \ref{fig:btree_search}.
-         \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.5\textwidth]{img/btree_search.png}
-              \caption{btree search}
-              \label{fig:btree_search}
-            \end{figure} 
-           
  
-            \item Búsqueda del mínimo \\
-            El valor mínimo encontrado fue de "11", lo cual se muestra en la siguiente captura  se muestra en la en la figura \ref{fig:btree_min}.
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.3\textwidth]{img/btree_min.png}
-              \caption{btree mínimo}
-              \label{fig:btree_min}
-            \end{figure} 
-            \item Búsqueda del máximo \\
-                El valor máximo encontrado fue de "105", lo cual se muestra en la siguiente captura  se muestra en la en la figura \ref{fig:btree_max}.
-            \begin{figure}[htbp]
-              \centering
-              \includegraphics[width=0.3\textwidth]{img/btree_max.png}
-              \caption{btree mínimo}
-              \label{fig:btree_max}
-            \end{figure} 
-        \end{itemize}
-  
+ 
 
     \section{Conclusiones}
         \begin{itemize}
-                 \item Un árbol AVL se mantiene ordenado, pero hay mas rotaciones en las inserciones que en las eliminaciones, su costo para buscar, eliminar, insertar  es de O(Log n).
-                 \item Funciona de manera casi instantánea incluso con grandes volúmenes de datos. Ello se debe principalmente a la característica equilibrada del árbol, lo que permite tener acceso a todos los elementos con el mismo número de etapas, y en segundo lugar, al crecimiento logarítmico de la profundidad del árbol. Eso significa que la profundidad del árbol crece lentamente en comparación al número de hojas. Hay índices reales con millones de registros que tienen una profundidad de cuatro o cinco. Es poco común encontrar una profundidad de seis
+                 \item Un árbol AVL se mantiene ordenado, pero hay mas rotaciones en las inserciones que en las eliminaciones, su costo para buscar, eliminar, insertar  es de O(Log n).s
         \end{itemize}
     \section{Referencias}
   \begin{enumerate}
     \item González, A. H. (2013). Operaciones sobre árboles.
     \item	Weiss, M. A., Jorge tr Lozano Moreno, Andoni colab. téc Eguíluz,   Inés colab. téc Jacob. (1995). Estructuras de datos y algoritmos.
-    \item	Gutiérrez, X. F. (2002). Estructuras de datos: especificación, diseño e implementación. Univ. Politèc. de Catalunya.
-    \item	Brassard, G., Bratley, P., Giner, R. G. B. (1997). Fundamentos de algoritmia (Vol. 3, No. 5.1).  eMadrid Madrid: Prentice Hall.
-    \item \href{https://algorithm-visualizer.org/branch-and-bound/binary-search-tree}{Binary search tree}
-    \item \href{https://mikedombo.github.io/graphPlayground/}{Graph Playground}
-    \item \href{https://ingenieriadesoftware.es/visualizacion-animada-estructuras-datos/}{Visualización animada estructuras datos}
-    \item \href{https://graphviz.org/}{Graphviz}
-    \item \href{https://visualgo.net/en/bst}{Visualgo}
-    \item \href{https://www.geeksforgeeks.org/}{Geeksforgeeks}
-    \item Cormen, Thomas H.; Leiserson, Charles E.; Rivest, Ronald L.; Clifford Stein (2009). Introduction to Algorithms (3er edición). MIT Press and McGraw-Hill.
   \end{enumerate}
 
 \end{document} 
