@@ -120,7 +120,7 @@ class QuadTree {
       this.boundary.x,
       this.boundary.y,
       this.boundary.w * 2,
-      this.boundary.h
+      this.boundary.h * 2
     );
     if (this.divided) {
       this.northeast.show();
