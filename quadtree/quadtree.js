@@ -90,20 +90,26 @@ class QuadTree {
     // this.southeast.insert ( point );
     // this.southwest.insert ( point );
     if (!this.boundary.contains(point)) {
-      return;
+      return false;
     }
 
     if (this.points.length < this.capacity) {
       this.points.push(point);
+      return true;
     } else {
       if (!this.divided) {
         this.subdivide();
         this.divided = true;
       }
-      this.northeast.insert(point);
-      this.northwest.insert(point);
-      this.southeast.insert(point);
-      this.southwest.insert(point);
+      if (this.northeast.insert(point)) {
+        return true;
+      } else if (this.northwest.insert(point)) {
+        return true;
+      } else if (this.southeast.insert(point)) {
+        return true;
+      } else if (this.southwest.insert(point)) {
+        return true;
+      }
     }
   }
 

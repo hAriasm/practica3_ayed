@@ -17,6 +17,7 @@ function setup() {
   }
 
 
+
 }
 
 function draw(){
@@ -27,4 +28,9 @@ function draw(){
   }
   background(0);
   qt.show();
+
+  
+  stroke(255, 255, 0);
+  rectMode(CENTER);
+  rect(300, 300, 107, 92);
 }
