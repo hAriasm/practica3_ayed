@@ -51,8 +51,7 @@ class QuadTree {
   // divide el quadtree en 4 quadtrees
   subdivide() {
     // Algoritmo
-    // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,
-    qt_southwest
+    // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,    qt_southwest;
 
     // 2: Asignar los QuadTree creados a cada hijo
     this.northeast = qt_northeast;
@@ -77,6 +76,31 @@ class QuadTree {
     // this.southeast.insert ( point );
     // this.southwest.insert ( point );
 
+    if (!this.contains(p.usrCoords[1], p.usrCoords[2])) {
+      return false;
+    }
+    if (this.points.length < this.capacity) {
+      this.points.push(p);
+      return true;
+    }
+
+    if (this.northWest === null) {
+      this.subdivide();
+    }
+
+    if (this.northWest.insert(p)) {
+      return true;
+    }
+
+    if (this.northEast.insert(p)) {
+      return true;
+    }
+
+    if (this.southEast.insert(p)) {
+      return true;
+    }
+
+    return !!this.southWest.insert(p);
   }
 
   show() {
@@ -84,7 +108,11 @@ class QuadTree {
     strokeWeight(1);
     noFill();
     rectMode(CENTER);
-    rect(this.boundary.x, this.boundary.y, this.boundary.w * 2, this.boundary.h
+    rect(
+      this.boundary.x,
+      this.boundary.y,
+      this.boundary.w * 2,
+      this.boundary.h
     );
     if (this.divided) {
       this.northeast.show();
@@ -99,6 +127,5 @@ class QuadTree {
     }
   }
 
-  query(range, found) {
-  }
+  query(range, found) {}
 }
