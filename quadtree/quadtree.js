@@ -17,10 +17,10 @@ class Rectangle {
   // verifica si este objeto contiene un objeto Punto
   contains(point) {
     if (
-      point.x > this.x - w &&
-      point.x < this.x + w &&
-      point.y > this.y - h &&
-      point.y < this.y + h
+      point.x > this.x - this.w &&
+      point.x <= this.x + this.w &&
+      point.y > this.y - this.h &&
+      point.y <= this.y + this.h
     ) {
       return true;
     }
@@ -30,12 +30,13 @@ class Rectangle {
   // verifica si este objeto se intersecta con otro objeto Rectangle
   intersects(range) {
     if (
-      range.x == this.x - w ||
-      range.x == this.x + w ||
-      range.y == this.y - h ||
-      range.y == this.y + h
-    )
+      (range.x - range.w > this.x - this.w && range.x - range.w <= this.x + this.w) ||
+      (range.x + range.w > this.x - this.w && range.x + range.w <= this.x + this.w) ||
+      (range.y - range.h > this.y - this.h && range.y - range.h <= this.y + this.h) ||
+      (range.y + range.h > this.y - this.h && range.y + range.h <= this.y + this.h)
+    ) {
       return true;
+    }
   }
 }
 
@@ -97,7 +98,7 @@ class QuadTree {
       point(p.x, p.y);
     }
   }
-  
+
   query(range, found) {
   }
 }
