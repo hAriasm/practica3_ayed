@@ -1,5 +1,3 @@
-*.exe
-/cpp/.vscode
 /.vscode
 /latex/informe_latex/.aux
 /latex/informe_latex/.bbl
@@ -16,4 +14,4 @@
 /latex/presentacion_latex/.out
 /latex/presentacion_latex/.snm
 /latex/presentacion_latex/.synctex
-/graph/*.dot
+
