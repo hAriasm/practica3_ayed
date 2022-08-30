@@ -16,15 +16,12 @@ class Rectangle {
 
   // verifica si este objeto contiene un objeto Punto
   contains(point) {
-    if (
-      point.x > this.x - this.w &&
+    return (
+      point.x >= this.x - this.w &&
       point.x <= this.x + this.w &&
-      point.y > this.y - this.h &&
+      point.y >= this.y - this.h &&
       point.y <= this.y + this.h
-    ) {
-      return true;
-    }
-    return false;
+    )
   }
 
   // verifica si este objeto se intersecta con otro objeto Rectangle
@@ -93,14 +90,14 @@ class QuadTree {
     // this.northwest.insert ( point );
     // this.southeast.insert ( point );
     // this.southwest.insert ( point );
-    if(!this.boundary.contains(point)){
+    if (!this.boundary.contains(point)) {
       return;
     }
 
-    if(this.points.length < this.capacity){
+    if (this.points.length < this.capacity) {
       this.points.push(point);
     } else {
-      if(!this.divided){
+      if (!this.divided) {
         this.subdivide();
         this.divided = true;
       }
@@ -135,5 +132,5 @@ class QuadTree {
     }
   }
 
-  query(range, found) {}
+  query(range, found) { }
 }
