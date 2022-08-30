@@ -21,7 +21,7 @@ class Rectangle {
       point.x <= this.x + this.w &&
       point.y > this.y - this.h &&
       point.y <= this.y + this.h
-    )
+    );
   }
 
   // verifica si este objeto se intersecta con otro objeto Rectangle
@@ -68,13 +68,12 @@ class QuadTree {
     let h = this.boundary.h;
     let ne = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
     this.northeast = new QuadTree(ne);
-    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h  / 2);
+    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h / 2);
     this.northwest = new QuadTree(nw);
-    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h  / 2);
+    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h / 2);
     this.southeast = new QuadTree(se);
-    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h  / 2);
+    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h / 2);
     this.southwest = new QuadTree(sw);
- 
   }
 
   insert(point) {
@@ -132,5 +131,25 @@ class QuadTree {
     }
   }
 
-  query(range, found) { }
+  query(range, found) {
+    if (!found){
+      found = [];
+    }
+    if (!this.boundary.intersects(range)) {
+      return;
+    } else {
+      for (let p of this.points) {
+        if (range.contains(p)) {
+          found.push(p);
+        }
+      }
+      if (this.divided) {
+        this.northwest.query(range, found);
+        this.northeast.query(range, found);
+        this.southwest.query(range, found);
+        this.southeast.query(range, found);
+      }
+    }
+    return found;
+  }
 }
