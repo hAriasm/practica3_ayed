@@ -16,6 +16,15 @@ function setup() {
     qt.insert(p);
   }
 
+
+}
+
+function draw(){
+
+  if(mouseIsPressed){
+    let m = new Point(mouseX, mouseY);
+    qt.insert(m);
+  }
   background(0);
   qt.show();
 }
