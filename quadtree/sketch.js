@@ -30,7 +30,18 @@ function draw(){
   qt.show();
 
   
-  stroke(255, 255, 0);
-  rectMode(CENTER);
-  rect(300, 300, 107, 92);
+   stroke(255, 255, 0);
+    rectMode(CENTER);
+    let range = new Rectangle(mouseX, mouseY,25,25);
+    rect(range.x, range.y, range.w*2,range.h*2 );
+    let points = [];
+    qt.query(range, points);
+    for(let p of points){
+      strokeWeight(4);
+      points(p.x,p.y)
+    }
+
+  //rect(300, 300, 107, 92);
+
+
 }
