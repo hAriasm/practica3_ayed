@@ -68,13 +68,13 @@ class QuadTree {
     let h = this.boundary.h;
     let ne = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
     this.northeast = new QuadTree(ne);
-    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h  / 2);
+    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h / 2);
     this.northwest = new QuadTree(nw);
-    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h  / 2);
+    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h / 2);
     this.southeast = new QuadTree(se);
-    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h  / 2);
+    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h / 2);
     this.southwest = new QuadTree(sw);
- 
+
   }
 
   insert(point) {
@@ -91,20 +91,26 @@ class QuadTree {
     // this.southeast.insert ( point );
     // this.southwest.insert ( point );
     if (!this.boundary.contains(point)) {
-      return;
+      return false;
     }
 
     if (this.points.length < this.capacity) {
       this.points.push(point);
+      return true;
     } else {
       if (!this.divided) {
         this.subdivide();
         this.divided = true;
       }
-      this.northeast.insert(point);
-      this.northwest.insert(point);
-      this.southeast.insert(point);
-      this.southwest.insert(point);
+      if (this.northeast.insert(point)) {
+        return true;
+      } else if (this.northwest.insert(point)) {
+        return true;
+      } else if (this.southeast.insert(point)) {
+        return true;
+      } else if (this.southwest.insert(point)) {
+        return true;
+      }
     }
   }
 
@@ -132,5 +138,12 @@ class QuadTree {
     }
   }
 
-  query(range, found) { }
+  query(range, found) { 
+
+    if(!this.boundary.intersects(range)) {
+      return;
+    }
+
+
+  }
 }
