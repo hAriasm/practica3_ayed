@@ -30,10 +30,14 @@ class Rectangle {
   // verifica si este objeto se intersecta con otro objeto Rectangle
   intersects(range) {
     if (
-      (range.x - range.w > this.x - this.w && range.x - range.w <= this.x + this.w) ||
-      (range.x + range.w > this.x - this.w && range.x + range.w <= this.x + this.w) ||
-      (range.y - range.h > this.y - this.h && range.y - range.h <= this.y + this.h) ||
-      (range.y + range.h > this.y - this.h && range.y + range.h <= this.y + this.h)
+      (range.x - range.w > this.x - this.w &&
+        range.x - range.w <= this.x + this.w) ||
+      (range.x + range.w > this.x - this.w &&
+        range.x + range.w <= this.x + this.w) ||
+      (range.y - range.h > this.y - this.h &&
+        range.y - range.h <= this.y + this.h) ||
+      (range.y + range.h > this.y - this.h &&
+        range.y + range.h <= this.y + this.h)
     ) {
       return true;
     }
@@ -54,12 +58,26 @@ class QuadTree {
     // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,    qt_southwest;
 
     // 2: Asignar los QuadTree creados a cada hijo
-    this.northeast = qt_northeast;
-    this.northwest = qt_northwest;
-    this.southeast = qt_southeast;
-    this.southwest = qt_southwest;
+    //this.northeast = qt_northeast;
+    //this.northwest = qt_northwest;
+    //this.southeast = qt_southeast;
+    //this.southwest = qt_southwest;
 
     // 3.- Hacer: this.divided <- true
+
+    let x = this.boundary.x;
+    let y = this.boundary.y;
+    let w = this.boundary.w;
+    let h = this.boundary.h;
+    let ne = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
+    this.northeast = new QuadTree(ne);
+    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h  / 2);
+    this.northwest = new QuadTree(nw);
+    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h  / 2);
+    this.southeast = new QuadTree(se);
+    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h  / 2);
+    this.southwest = new QuadTree(sw);
+ 
   }
 
   insert(point) {
@@ -75,32 +93,22 @@ class QuadTree {
     // this.northwest.insert ( point );
     // this.southeast.insert ( point );
     // this.southwest.insert ( point );
-
-    if (!this.contains(p.usrCoords[1], p.usrCoords[2])) {
-      return false;
-    }
-    if (this.points.length < this.capacity) {
-      this.points.push(p);
-      return true;
+    if(!this.boundary.contains(point)){
+      return;
     }
 
-    if (this.northWest === null) {
-      this.subdivide();
+    if(this.points.length < this.capacity){
+      this.points.push(point);
+    } else {
+      if(!this.divided){
+        this.subdivide();
+        this.divided = true;
+      }
+      this.northeast.insert(point);
+      this.northwest.insert(point);
+      this.southeast.insert(point);
+      this.southwest.insert(point);
     }
-
-    if (this.northWest.insert(p)) {
-      return true;
-    }
-
-    if (this.northEast.insert(p)) {
-      return true;
-    }
-
-    if (this.southEast.insert(p)) {
-      return true;
-    }
-
-    return !!this.southWest.insert(p);
   }
 
   show() {
