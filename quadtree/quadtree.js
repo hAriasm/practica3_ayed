@@ -17,9 +17,9 @@ class Rectangle {
   // verifica si este objeto contiene un objeto Punto
   contains(point) {
     return (
-      point.x >= this.x - this.w &&
+      point.x > this.x - this.w &&
       point.x <= this.x + this.w &&
-      point.y >= this.y - this.h &&
+      point.y > this.y - this.h &&
       point.y <= this.y + this.h
     )
   }
