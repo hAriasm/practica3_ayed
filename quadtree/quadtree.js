@@ -73,14 +73,14 @@ class QuadTree {
     let y = this.boundary.y;
     let w = this.boundary.w;
     let h = this.boundary.h;
-    let ne = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
-    this.northeast = new QuadTree(ne);
-    let nw = new Rectangle(x - w / 2, y - h / 2, w / 2, h / 2);
-    this.northwest = new QuadTree(nw);
-    let se = new Rectangle(x + w / 2, y + h / 2, w / 2, h / 2);
-    this.southeast = new QuadTree(se);
-    let sw = new Rectangle(x - w / 2, y + h / 2, w / 2, h / 2);
-    this.southwest = new QuadTree(sw);
+    let ne = new Rectangle(x + w / 2, y + h / 2, w / 2, h / 2);
+    this.northeast = new QuadTree(ne, this.capacity);
+    let nw = new Rectangle(x - w / 2, y + h / 2, w / 2, h / 2);
+    this.northwest = new QuadTree(nw, this.capacity);
+    let se = new Rectangle(x + w / 2, y - h / 2, w / 2, h / 2);
+    this.southeast = new QuadTree(se, this.capacity);
+    let sw = new Rectangle(x - w / 2, y - h / 2, w / 2, h / 2);
+    this.southwest = new QuadTree(sw, this.capacity);
   }
 
   insert(point) {
