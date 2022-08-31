@@ -8,10 +8,10 @@ function setup() {
   let boundary = new Rectangle(200, 200, 200, 200);
 
   // each leave just could have 4 elements
-  qt = new QuadTree(boundary, 10);
+  qt = new QuadTree(boundary, 5);
 
   console.log(qt);
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 20; i++) {
     let p = new Point(Math.random() * 400, Math.random() * 400);
     qt.insert(p);
   }
