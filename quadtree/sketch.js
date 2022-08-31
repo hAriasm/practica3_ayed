@@ -11,25 +11,19 @@ function setup() {
   qt = new QuadTree(boundary, 4);
 
   console.log(qt);
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 20; i++) {
     let p = new Point(Math.random() * 400, Math.random() * 400);
     qt.insert(p);
   }
-
-
-
 }
 
 function draw(){
-
-  if(mouseIsPressed){
-    let m = new Point(mouseX, mouseY);
-    qt.insert(m);
-  }
+//  if(mouseIsPressed){
+//    let m = new Point(mouseX, mouseY);
+//    qt.insert(m);
+// }
   background(0);
   qt.show();
-
-  
    stroke(255, 255, 0);
     rectMode(CENTER);
     let range = new Rectangle(mouseX, mouseY,25,25);
@@ -40,8 +34,5 @@ function draw(){
       strokeWeight(4);
       point(p.x,p.y)
     }
-
   //rect(300, 300, 107, 92);
-
-
 }

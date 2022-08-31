@@ -115,6 +115,7 @@ class QuadTree {
 
   show() {
     stroke(255);
+    noFill();
     strokeWeight(1);
     noFill();
     rectMode(CENTER);
@@ -124,17 +125,17 @@ class QuadTree {
       this.boundary.w * 2,
       this.boundary.h * 2
     );
-    if (this.divided) {
+     for (let p of this.points) {
+      strokeWeight(2);
+      point(p.x, p.y);
+    }
+   if (this.divided) {
       this.northeast.show();
       this.northwest.show();
       this.southeast.show();
       this.southwest.show();
     }
 
-    for (let p of this.points) {
-      strokeWeight(4);
-      point(p.x, p.y);
-    }
   }
 
   query(range, found) {
