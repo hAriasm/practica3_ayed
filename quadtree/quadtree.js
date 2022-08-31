@@ -26,18 +26,25 @@ class Rectangle {
 
   // verifica si este objeto se intersecta con otro objeto Rectangle
   intersects(range) {
-    if (
-      (range.x - range.w > this.x - this.w &&
-        range.x - range.w <= this.x + this.w) ||
-      (range.x + range.w > this.x - this.w &&
-        range.x + range.w <= this.x + this.w) ||
-      (range.y - range.h > this.y - this.h &&
-        range.y - range.h <= this.y + this.h) ||
-      (range.y + range.h > this.y - this.h &&
-        range.y + range.h <= this.y + this.h)
-    ) {
-      return true;
-    }
+    return !(
+      range.x - range.w > this.x + this.w ||
+      range.x + range.w < this.x - this.w ||
+      range.y - range.h > this.y + this.h ||
+      range.y + range.h < this.y - this.h
+    );
+
+    // if (
+    //   (range.x - range.w > this.x - this.w &&
+    //     range.x - range.w <= this.x + this.w) ||
+    //   (range.x + range.w > this.x - this.w &&
+    //     range.x + range.w <= this.x + this.w) ||
+    //   (range.y - range.h > this.y - this.h &&
+    //     range.y - range.h <= this.y + this.h) ||
+    //   (range.y + range.h > this.y - this.h &&
+    //     range.y + range.h <= this.y + this.h)
+    // ) {
+    //   return true;
+    // }
   }
 }
 
@@ -115,7 +122,6 @@ class QuadTree {
 
   show() {
     stroke(255);
-    noFill();
     strokeWeight(1);
     noFill();
     rectMode(CENTER);
@@ -125,21 +131,21 @@ class QuadTree {
       this.boundary.w * 2,
       this.boundary.h * 2
     );
-     for (let p of this.points) {
-      strokeWeight(2);
-      point(p.x, p.y);
-    }
-   if (this.divided) {
+    if (this.divided) {
       this.northeast.show();
       this.northwest.show();
       this.southeast.show();
       this.southwest.show();
     }
 
+    for (let p of this.points) {
+      strokeWeight(4);
+      point(p.x, p.y);
+    }
   }
 
   query(range, found) {
-    if (!found){
+    if (!found) {
       found = [];
     }
     if (!this.boundary.intersects(range)) {
