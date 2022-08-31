@@ -38,7 +38,7 @@ function draw(){
     qt.query(range, points);
     for(let p of points){
       strokeWeight(4);
-      points(p.x,p.y)
+      point(p.x,p.y)
     }
 
   //rect(300, 300, 107, 92);
