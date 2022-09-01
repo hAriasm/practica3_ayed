@@ -18,7 +18,7 @@ function setup() {
 
 function draw() {
   if (mouseIsPressed) {
-    let m = new Point(mouseX, mouseY);
+    //let m = new Point(mouseX, mouseY);
     ot.insert(m);
   }
   background(0);
