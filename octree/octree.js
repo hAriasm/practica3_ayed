@@ -50,12 +50,12 @@ class OcTree {
     this.divided = false;
   }
 
-  // divide el quadtree en 4 quadtrees
+  // divide el octree en 4 octrees
   subdivide() {
     // Algoritmo
     // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,    qt_southwest;
 
-    // 2: Asignar los QuadTree creados a cada hijo
+    // 2: Asignar los OcTree creados a cada hijo
     //this.northeast = qt_northeast;
     //this.northwest = qt_northwest;
     //this.southeast = qt_southeast;
@@ -71,29 +71,29 @@ class OcTree {
     let d = this.surface.d;
     
     let neu = new Rectangle(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
-    this.northeastup = new QuadTree(neu, this.capacity);
+    this.northeastup = new OcTree(neu, this.capacity);
     let ned = new Rectangle(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
-    this.northeastdown = new QuadTree(ned, this.capacity);
+    this.northeastdown = new OcTree(ned, this.capacity);
 
     let nwu = new Rectangle(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
-    this.northwestup = new QuadTree(nwu, this.capacity);
+    this.northwestup = new OcTree(nwu, this.capacity);
     let nwd = new Rectangle(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
-    this.northwestdown = new QuadTree(nwd, this.capacity);
+    this.northwestdown = new OcTree(nwd, this.capacity);
 
     let seu = new Rectangle(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
-    this.southeastup = new QuadTree(seu, this.capacity);
+    this.southeastup = new OcTree(seu, this.capacity);
     let sed = new Rectangle(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
-    this.southeastdown = new QuadTree(sed, this.capacity);
+    this.southeastdown = new OcTree(sed, this.capacity);
 
     let swu = new Rectangle(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
-    this.southwestup = new QuadTree(swu, this.capacity);
+    this.southwestup = new OcTree(swu, this.capacity);
     let swd = new Rectangle(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
-    this.southwestdown = new QuadTree(swd, this.capacity);
+    this.southwestdown = new OcTree(swd, this.capacity);
   }
 
   insert(point) {
     // Algoritmo
-    // 1: Si el punto no esta en los limites ( surface ) del quadtree Return
+    // 1: Si el punto no esta en los limites ( surface ) del octree Return
 
     // 2: Si ( this.points.length ) < ( this.capacity ),
     // 2.1 Insertamos en el vector this.points
