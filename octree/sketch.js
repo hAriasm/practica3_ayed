@@ -8,11 +8,12 @@ function setup() {
   let surface = new Cube(200, 200, 200, 200, 200, 200);
 
   // each leave just could have 4 elements
-  ot = new OcTree(surface, 5);
+  ot = new OcTree(surface, 2);
 
   console.log(ot);
-  for (let i = 0; i < 20; i++) {
-    let p = new Point(Math.random() * 400, Math.random() * 400, Math.random() * 400)
+  for (let i = 0; i < 10; i++) {
+    let p = new Point(Math.random() * 400, Math.random() * 400, Math.random() * 400);
+    ot.insert(p);
   }
 }
 

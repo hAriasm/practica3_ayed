@@ -29,7 +29,7 @@ class Cube {
     );
   }
 
-  // verifica si este objeto se intersecta con otro objeto Rectangle
+  // verifica si este objeto se intersecta con otro objeto Cube
   intersects(range) {
     return !(
       range.x - range.w > this.x + this.w ||
@@ -70,24 +70,24 @@ class OcTree {
     let h = this.surface.h;
     let d = this.surface.d;
     
-    let neu = new Rectangle(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let neu = new Cube(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.northeastup = new OcTree(neu, this.capacity);
-    let ned = new Rectangle(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let ned = new Cube(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northeastdown = new OcTree(ned, this.capacity);
 
-    let nwu = new Rectangle(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let nwu = new Cube(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.northwestup = new OcTree(nwu, this.capacity);
-    let nwd = new Rectangle(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let nwd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northwestdown = new OcTree(nwd, this.capacity);
 
-    let seu = new Rectangle(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let seu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southeastup = new OcTree(seu, this.capacity);
-    let sed = new Rectangle(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let sed = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.southeastdown = new OcTree(sed, this.capacity);
 
-    let swu = new Rectangle(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let swu = new Cube(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southwestup = new OcTree(swu, this.capacity);
-    let swd = new Rectangle(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let swd = new Cube(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.southwestdown = new OcTree(swd, this.capacity);
   }
 
