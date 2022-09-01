@@ -8,7 +8,7 @@ class Point {
 }
 
 class Cube {
-  constructor(x, y,z, w, h,) {
+  constructor(x, y, z, w, h,d) {
     this.x = x; // center
     this.y = y;
     this.z = z;
