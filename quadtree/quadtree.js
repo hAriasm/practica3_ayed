@@ -32,19 +32,6 @@ class Rectangle {
       range.y - range.h > this.y + this.h ||
       range.y + range.h < this.y - this.h
     );
-
-    // if (
-    //   (range.x - range.w > this.x - this.w &&
-    //     range.x - range.w <= this.x + this.w) ||
-    //   (range.x + range.w > this.x - this.w &&
-    //     range.x + range.w <= this.x + this.w) ||
-    //   (range.y - range.h > this.y - this.h &&
-    //     range.y - range.h <= this.y + this.h) ||
-    //   (range.y + range.h > this.y - this.h &&
-    //     range.y + range.h <= this.y + this.h)
-    // ) {
-    //   return true;
-    // }
   }
 }
 
