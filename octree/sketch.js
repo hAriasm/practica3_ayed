@@ -27,10 +27,10 @@ function draw() {
   ot.show();
   noFill();
   stroke(255);
-  strokeWeight(0.5);
+  strokeWeight(.75);
   orbitControl()
   box(600)
-  box(400)
+  box(400, 400, 400, 2, 2)
   
   //rect(300, 300, 107, 92);
 }
