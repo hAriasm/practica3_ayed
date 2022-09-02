@@ -19,7 +19,7 @@ function setup() {
 
 function draw() {
   if (mouseIsPressed) {
-    //let m = new Point(mouseX, mouseY);
+    let m = new Point(Math.random() * 400, Math.random() * 400, Math.random() * 400);
     ot.insert(m);
   }
   background(0);
