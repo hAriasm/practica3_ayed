@@ -18,10 +18,10 @@ function setup() {
 }
 
 function draw() {
-  if (mouseIsPressed) {
-    //let m = new Point(mouseX, mouseY);
-    ot.insert(m);
-  }
+// if (mouseIsPressed) {
+//let m = new Point(mouseX, mouseY);
+//  ot.insert(m);
+// }
   background(0);
   ot.show();
   stroke(0, 255, 0);
