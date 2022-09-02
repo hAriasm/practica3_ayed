@@ -50,7 +50,7 @@ class OcTree {
     this.divided = false;
   }
 
-  // divide el octree en 8 octrees
+  // divide el octree en 4 octrees
   subdivide() {
     // Algoritmo
     // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,    qt_southwest;
@@ -70,27 +70,25 @@ class OcTree {
     let h = this.surface.h;
     let d = this.surface.d;
     
-    let neu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let neu = new Cube(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.northeastup = new OcTree(neu, this.capacity);
-    let ned = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let ned = new Cube(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northeastdown = new OcTree(ned, this.capacity);
 
-    let nwu = new Cube(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let nwu = new Cube(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.northwestup = new OcTree(nwu, this.capacity);
-    let nwd = new Cube(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let nwd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northwestdown = new OcTree(nwd, this.capacity);
 
-    let seu = new Cube(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let seu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southeastup = new OcTree(seu, this.capacity);
-    let sed = new Cube(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let sed = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.southeastdown = new OcTree(sed, this.capacity);
 
-    let swu = new Cube(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let swu = new Cube(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southwestup = new OcTree(swu, this.capacity);
-    let swd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let swd = new Cube(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.southwestdown = new OcTree(swd, this.capacity);
-    
-    this.divided = true;
   }
 
   insert(point) {
@@ -118,6 +116,7 @@ class OcTree {
     else {
       if (!this.divided) {
         this.subdivide();
+        this.divided = true;
       }
       if (this.northeastup.insert(point)) {
         return true;
