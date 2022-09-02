@@ -153,15 +153,15 @@ class OcTree {
     stroke(255);
     strokeWeight(1);
     noFill();
-    rectMode(CENTER);
-    rect(
-      this.surface.x,
-      this.surface.y,
-      this.surface.z,
-      this.surface.w * 2,
-      this.surface.h * 2,
-      this.surface.d * 2,
-    );
+    //rectMode(CENTER);
+    // rect(
+    //   this.surface.x,
+    //   this.surface.y,
+    //   this.surface.z,
+    //   this.surface.w * 2,
+    //   this.surface.h * 2,
+    //   this.surface.d * 2,
+    // );
     if (this.divided) {
       this.northeastup.show();
       this.northeastdown.show();
