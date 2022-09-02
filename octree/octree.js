@@ -151,7 +151,7 @@ class OcTree {
 
   show() {
     stroke(255);
-    strokeWeight(1);
+    // strokeWeight(1);
     noFill();
     //rectMode(CENTER);
     // rect(
@@ -177,7 +177,7 @@ class OcTree {
     }
 
     for (let p of this.points) {
-      strokeWeight(4);
+      strokeWeight(7);
       point(p.x, p.y, p.z);
     }
   }
