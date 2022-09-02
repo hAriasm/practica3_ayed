@@ -178,7 +178,7 @@ class OcTree {
 
     for (let p of this.points) {
       strokeWeight(7);
-      point(p.x, p.y, p.z);
+      point(p.x - 200, p.y - 200, p.z - 200);
     }
   }
 

@@ -2,7 +2,7 @@ let ot;
 let count = 0;
 
 function setup() {
-  let cnv = createCanvas(1200, 1200, WEBGL);
+  let cnv = createCanvas(800, 800, WEBGL);
   // centre point and half of width and height
   let surface = new Cube(200, 200, 200, 200, 200, 200);
 
