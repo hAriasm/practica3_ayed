@@ -55,6 +55,10 @@ class QuadTree {
     //this.southwest = qt_southwest;
 
     // 3.- Hacer: this.divided <- true
+    console.log("points: " + this.points.length);
+    // if(this.points.length >= this.capacity) {
+    //   return;
+    // }
 
     let x = this.boundary.x;
     let y = this.boundary.y;
@@ -91,24 +95,18 @@ class QuadTree {
     
     if (this.points.length < this.capacity) {
       this.points.push(point);
-      console.log("insertando el punto " + point.x + ", " + point.y);
       return true;
     } else {
-      if (!this.divided && this.points.length >= this.capacity) {
-        console.log("subdividir " + point.x + ", " + point.y);
+      if (!this.divided) {
         this.subdivide();
       }
       if (this.northeast.insert(point)) {
-        console.log("northeast ");
         return true;
       } else if (this.northwest.insert(point)) {
-        console.log("northwest ");
         return true;
       } else if (this.southeast.insert(point)) {
-        console.log("southeast ");
         return true;
       } else if (this.southwest.insert(point)) {
-        console.log("southwest ");
         return true;
       }
     }

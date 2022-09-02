@@ -8,7 +8,7 @@ function setup() {
   let boundary = new Rectangle(200, 200, 200, 200);
 
   // each leave just could have 4 elements
-  qt = new QuadTree(boundary, 2);
+  qt = new QuadTree(boundary, 4);
 
   console.log(qt);
   for (let i = 0; i < 10; i++) {
@@ -21,7 +21,7 @@ function draw() {
   if (mouseIsPressed) {
     let m = new Point(mouseX, mouseY);
     qt.insert(m);
-    console.log("termino de insertar");
+    mouseIsPressed = false;
   }
   background(0);
   qt.show();
