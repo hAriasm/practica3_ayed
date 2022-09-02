@@ -8,7 +8,7 @@ class Point {
 }
 
 class Cube {
-  constructor(x, y, z, w, h,d) {
+  constructor(x, y, z, w, h, d) {
     this.x = x; // center
     this.y = y;
     this.z = z;
@@ -69,7 +69,7 @@ class OcTree {
     let w = this.surface.w;
     let h = this.surface.h;
     let d = this.surface.d;
-    
+
     let neu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.northeastup = new OcTree(neu, this.capacity);
     let ned = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
@@ -89,7 +89,7 @@ class OcTree {
     this.southwestup = new OcTree(swu, this.capacity);
     let swd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.southwestdown = new OcTree(swd, this.capacity);
-    
+
     this.divided = true;
   }
 
@@ -114,7 +114,7 @@ class OcTree {
       this.points.push(point);
       return true;
     }
-     
+
     else {
       if (!this.divided) {
         this.subdivide();
@@ -125,20 +125,20 @@ class OcTree {
       else if (this.northeastdown.insert(point)) {
         return true;
 
-      } 
+      }
       else if (this.northwestup.insert(point)) {
         return true;
-      } 
+      }
       else if (this.northwestdown.insert(point)) {
         return true;
-      } 
+      }
 
       else if (this.southeastup.insert(point)) {
         return true;
-      } 
+      }
       else if (this.southeastdown.insert(point)) {
         return true;
-      } 
+      }
 
       else if (this.southwestup.insert(point)) {
         return true;
@@ -149,9 +149,9 @@ class OcTree {
     }
   }
 
-  show() {
+  show(tx, ty, tz) {
     stroke(255);
-    // strokeWeight(1);
+    strokeWeight(0.5);
     noFill();
     //rectMode(CENTER);
     // rect(
@@ -162,18 +162,25 @@ class OcTree {
     //   this.surface.h * 2,
     //   this.surface.d * 2,
     // );
+    translate(this.surface.w * tx, this.surface.h * ty, this.surface.d * tz);
+    // console.log(this.surface.w * tx + "," + this.surface.h * ty + "," + this.surface.d * tz);
+    box(2*this.surface.w, 2*this.surface.h, 2*this.surface.d)
+    translate(-this.surface.w * tx, -this.surface.h * ty, -this.surface.d * tz);
+    box(50)
+
     if (this.divided) {
-      this.northeastup.show();
-      this.northeastdown.show();
+      strokeWeight(3);
+      stroke(0, 255, 0);
+      this.northeastup.show(+1, -1, -1);
+      this.northwestup.show(-2, 0, 0);
+      this.southwestup.show(0, 0, 2);
+      this.southeastup.show(2, 0, 0);
+      
+      this.southeastdown.show(0, 2, 0);
+      this.southwestdown.show(-2, 0, 0);
+      this.northwestdown.show(0, 0, -2);
+      this.northeastdown.show(2 ,0 , 0);
 
-      this.northwestup.show();
-      this.northwestdown.show();
-
-      this.southeastup.show();
-      this.southeastdown.show();
-
-      this.southwestup.show();
-      this.southwestdown.show();
     }
 
     for (let p of this.points) {
