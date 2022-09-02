@@ -55,9 +55,6 @@ class QuadTree {
     //this.southwest = qt_southwest;
 
     // 3.- Hacer: this.divided <- true
-    // if(this.points.length >= this.capacity) {
-    //   return;
-    // }
 
     let x = this.boundary.x;
     let y = this.boundary.y;
