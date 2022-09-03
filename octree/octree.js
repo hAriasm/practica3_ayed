@@ -195,23 +195,31 @@ class OcTree {
 
   }
 
-  showPoints() {
+  showPoints(showLabels) {
     stroke(255);
     strokeWeight(7);
 
     if (this.divided) {
-      this.northwestup.showPoints();
-      this.northeastup.showPoints();
-      this.northeastdown.showPoints();
-      this.northwestdown.showPoints();
-      this.southeastup.showPoints();
-      this.southwestup.showPoints();
-      this.southwestdown.showPoints();
-      this.southeastdown.showPoints();
+      this.northwestup.showPoints(showLabels);
+      this.northeastup.showPoints(showLabels);
+      this.northeastdown.showPoints(showLabels);
+      this.northwestdown.showPoints(showLabels);
+      this.southeastup.showPoints(showLabels);
+      this.southwestup.showPoints(showLabels);
+      this.southwestdown.showPoints(showLabels);
+      this.southeastdown.showPoints(showLabels);
     }
 
     for (let p of this.points) {
       point(p.x - 200, p.y - 200, p.z - 200);
+
+      if(showLabels) {
+        textSize(12);
+        fill(255, 255, 153);
+        translate(0, 0, p.z - 200);
+        text("(" + p.x + ", " + p.y + ", " + p.z + ")", p.x - 200, p.y - 200);
+        translate(0, 0, 200 - p.z);
+      } 
     }
   }
 
