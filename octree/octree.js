@@ -152,7 +152,7 @@ class OcTree {
   show(tx, ty, tz) {
     stroke(0, 255, 255);
 
-    strokeWeight(0.5);
+    strokeWeight(.75);
     noFill();
 
     box(2 * this.surface.w, 2 * this.surface.h, 2 * this.surface.d)
