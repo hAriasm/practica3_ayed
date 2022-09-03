@@ -149,10 +149,18 @@ class OcTree {
     }
   }
 
-  show() {
+  show(tx, ty, tz) {
     stroke(255);
+   
+
+    for (let p of this.points) {
+      strokeWeight(7);
+      point(p.x - 200, p.y - 200, p.z - 200);
+    }
+
     strokeWeight(0.5);
     noFill();
+
     //rectMode(CENTER);
     // rect(
     //   this.surface.x,
@@ -162,32 +170,48 @@ class OcTree {
     //   this.surface.h * 2,
     //   this.surface.d * 2,
     // );
-    // translate(this.surface.w * tx, this.surface.h * ty, this.surface.d * tz);
+    // translate(this.surface.w*tx, this.surface.w*ty, this.surface.w*tz);
     // console.log(this.surface.w + "," + this.surface.h + "," + this.surface.d);
     box(2*this.surface.w, 2*this.surface.h, 2*this.surface.d)
-    box(50)
     
     if (this.divided) {
       strokeWeight(3);
       stroke(0, 255, 0);
-      // translate(this.surface.x - this.surface.w / 2, this.surface.y - this.surface.h / 2, this.surface.z + this.surface.d / 2);
-      this.northeastup.show();
-      // translate(-this.surface.x + this.surface.w / 2, -this.surface.y + this.surface.h / 2, -this.surface.z - this.surface.d / 2);
-      this.northwestup.show(-2, 0, 0);
-      this.southwestup.show(0, 0, 2);
-      this.southeastup.show(2, 0, 0);
       
-      this.southeastdown.show(0, 2, 0);
-      this.southwestdown.show(-2, 0, 0);
-      this.northwestdown.show(0, 0, -2);
-      this.northeastdown.show(2 ,0 , 0);
+      translate(-this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
+      this.northwestup.show(-1, -1, -1);
+      translate(this.surface.w/2, this.surface.h/2, this.surface.d/2);
 
+      translate(this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
+      this.northeastup.show(2, 0, 0);
+      translate(-this.surface.w/2, this.surface.h/2, this.surface.d/2);
+      
+      translate(this.surface.w/2, this.surface.h/2, -this.surface.d/2);
+      this.northeastdown.show(0 ,0 , -2);
+      translate(-this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      
+      translate(-this.surface.w/2, this.surface.h/2, -this.surface.d/2);
+      this.northwestdown.show(-2, 0, 0); 
+      translate(this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      
+      translate(this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      this.southeastup.show(0, 0, 2);
+      translate(-this.surface.w/2, this.surface.h/2, -this.surface.d/2);
+      
+      translate(-this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      this.southwestup.show(-2, 0, 0);
+      translate(this.surface.w/2, this.surface.h/2, -this.surface.d/2);
+      
+      translate(-this.surface.w/2, this.surface.h/2, this.surface.d/2);
+      this.southwestdown.show(0, 2, 0);
+      translate(this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
+      
+      translate(this.surface.w/2, this.surface.h/2, this.surface.d/2);
+      this.southeastdown.show(2, 0, 0);
+      translate(-this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
+      
     }
 
-    for (let p of this.points) {
-      strokeWeight(7);
-      point(p.x - 200, p.y - 200, p.z - 200);
-    }
   }
 
   query(range, found) {

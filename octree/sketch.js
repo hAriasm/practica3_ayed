@@ -17,7 +17,7 @@ function setup() {
   // ot.insert(new Point(1, 200, 1));
   // ot.insert(new Point(1, 1, 200));
   console.log(ot);
-  for (let i = 0; i < 25; i++) {
+  for (let i = 0; i < 10; i++) {
     let p = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
     ot.insert(p);
   }
@@ -25,13 +25,14 @@ function setup() {
 
 function draw() {
   
-  // if (mouseIsPressed) {
-  //   let m = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
-  //   ot.insert(m);
-  //   mouseIsPressed = false;
-  // }
+  if (mouseIsPressed) {
+    let m = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
+    ot.insert(m);
+    mouseIsPressed = false;
+  }
   background(0);
   ot.show(0, 0, 0);
+  translate();
   noFill();
   stroke(255);
   strokeWeight(1);
