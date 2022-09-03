@@ -70,24 +70,24 @@ class OcTree {
     let h = this.surface.h;
     let d = this.surface.d;
 
-    let neu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let neu = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northeastup = new OcTree(neu, this.capacity);
-    let ned = new Cube(x + w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let ned = new Cube(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northeastdown = new OcTree(ned, this.capacity);
 
-    let nwu = new Cube(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let nwu = new Cube(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northwestup = new OcTree(nwu, this.capacity);
-    let nwd = new Cube(x - w / 2, y - h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let nwd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
     this.northwestdown = new OcTree(nwd, this.capacity);
 
-    let seu = new Cube(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let seu = new Cube(x + w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southeastup = new OcTree(seu, this.capacity);
-    let sed = new Cube(x + w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let sed = new Cube(x + w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southeastdown = new OcTree(sed, this.capacity);
 
-    let swu = new Cube(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
+    let swu = new Cube(x - w / 2, y - h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southwestup = new OcTree(swu, this.capacity);
-    let swd = new Cube(x - w / 2, y + h / 2, z - d / 2, w / 2, h / 2, d / 2);
+    let swd = new Cube(x - w / 2, y + h / 2, z + d / 2, w / 2, h / 2, d / 2);
     this.southwestdown = new OcTree(swd, this.capacity);
 
     this.divided = true;
@@ -149,7 +149,7 @@ class OcTree {
     }
   }
 
-  show(tx, ty, tz) {
+  show() {
     stroke(255);
     strokeWeight(0.5);
     noFill();
@@ -162,16 +162,17 @@ class OcTree {
     //   this.surface.h * 2,
     //   this.surface.d * 2,
     // );
-    translate(this.surface.w * tx, this.surface.h * ty, this.surface.d * tz);
-    // console.log(this.surface.w * tx + "," + this.surface.h * ty + "," + this.surface.d * tz);
+    // translate(this.surface.w * tx, this.surface.h * ty, this.surface.d * tz);
+    // console.log(this.surface.w + "," + this.surface.h + "," + this.surface.d);
     box(2*this.surface.w, 2*this.surface.h, 2*this.surface.d)
-    translate(-this.surface.w * tx, -this.surface.h * ty, -this.surface.d * tz);
     box(50)
-
+    
     if (this.divided) {
       strokeWeight(3);
       stroke(0, 255, 0);
-      this.northeastup.show(+1, -1, -1);
+      // translate(this.surface.x - this.surface.w / 2, this.surface.y - this.surface.h / 2, this.surface.z + this.surface.d / 2);
+      this.northeastup.show();
+      // translate(-this.surface.x + this.surface.w / 2, -this.surface.y + this.surface.h / 2, -this.surface.z - this.surface.d / 2);
       this.northwestup.show(-2, 0, 0);
       this.southwestup.show(0, 0, 2);
       this.southeastup.show(2, 0, 0);

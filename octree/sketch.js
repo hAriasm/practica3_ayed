@@ -17,7 +17,7 @@ function setup() {
   // ot.insert(new Point(1, 200, 1));
   // ot.insert(new Point(1, 1, 200));
   console.log(ot);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 25; i++) {
     let p = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
     ot.insert(p);
   }
