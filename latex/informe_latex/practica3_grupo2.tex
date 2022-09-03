@@ -111,7 +111,7 @@
 \item Si un cuadro no contiene ningún punto, no cree un hijo para él
 \item Realice este proceso repetidamente hasta que todo el cuadro contenga uno o cero puntos.
 \end{enumerate}
-\begin{figure}[htbp]
+\begin{figure}[h!]
               \centering
               \includegraphics[width=0.8\textwidth]{img/quadtree.png}
               \caption{Representación gráfica del Quadtree}
@@ -131,9 +131,10 @@ La función de búsqueda se utiliza para localizar un nodo en el cuadrante dado.
 \clearpage
 \subsubsection{Cuadrantes en Quadtree: }
 \begin{itemize}
-    \item Se observa en la figura \ref{fig:quadtree_cuadrante} como se distrubuyen los cuadrantes y cuales son los nombres asignados a cada uno de ellos.
+    \item Se observa en la figura \ref{fig:quadtree_cuadrante} como estan ubicados los cuadrantes y cuales son los nombres asignados a cada uno de ellos.
 \end{itemize}
-\begin{figure}[htbp]
+
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{img/quadtree_cuadrante.png}
 \caption{Disposición de los cuadrantes en el Quadtree}
@@ -146,7 +147,7 @@ La función de búsqueda se utiliza para localizar un nodo en el cuadrante dado.
 \item En la figura \ref{fig:quadtree_insert} se puede observar que a medida que se incrementan puntos n $>$ 4 se va subdividiendo el cuadrante en 4 subcuadrantes.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{img/quadtree_insert.png}
 \caption{Inserción de puntos}
@@ -157,24 +158,24 @@ La función de búsqueda se utiliza para localizar un nodo en el cuadrante dado.
 \item En la figura \ref{fig:quadtree_insert_data} se puede observar la subdivision de los cuadrantes y los puntos contenidos.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{img/quadtree_insert_data.png}
+\includegraphics[width=0.9\textwidth]{img/quadtree_insert_data.png}
 \caption{Puntos insertados}
 \label{fig:quadtree_insert_data}
 \end{figure}
 
 \begin{itemize}
-\item En la figura \ref{fig:quadtree_search} se puede observar que se van resaltando los puntos dentro del area del cuadro verde.
+\item En la figura \ref{fig:quadtree_search} se puede observar que se van resaltando los puntos dentro del area del cuadro verde, el cual se va intersectando.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{img/quadtree_search.png}
 \caption{Busqueda de puntos}
 \label{fig:quadtree_search}
 \end{figure}
-
+\clearpage
 \subsection{Octree}
 
  El Octree es una estructura de datos de árbol en la que cada nodo interno puede tener como máximo 8 hijos. Al igual que el árbol binario que divide el espacio en dos segmentos, Octtree divide el espacio en ocho partes como máximo, lo que se denomina octanos. Se utiliza para almacenar el punto 3-D que ocupa una gran cantidad de espacio. Si todo el nodo interno del Octárbol contiene exactamente 8 hijos, entonces se llama Octárbol completo. También es útil para gráficos de alta resolución como gráficos de computadora en 3D.
@@ -187,7 +188,7 @@ El Octree se puede formar a partir de un volumen 3D siguiendo los siguientes pas
 \item No divida el cubo que tiene uno o cero puntos
 \item Realice este proceso repetidamente hasta que todo el cuadro contenga uno o cero puntos.
 \end{enumerate}
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.8\textwidth]{img/octree.png}
 \caption{Representación gráfica del Octree}
@@ -217,33 +218,33 @@ Si S es el número de puntos en cada dimensión, entonces el número de nodos qu
 \begin{itemize}
     \item Se observa en la figura \ref{fig:octree_cuadrante} como se distrubuyen los cuadrantes en 3D y cuales son los nombres asignados a cada uno de ellos.
 \end{itemize}
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{img/octree_cuadrante.png}
 \caption{Disposición de los cuadrantes en el Octree}
 \label{fig:octree_cuadrante}
 \end{figure}
-
+\clearpage
 \subsubsection{Resultados de la practica: }
 
 \begin{itemize}
-\item En la figura \ref{fig:octree_insert} se puede observar que a medida que se incrementan puntos n $>$ 2 se va subdividiendo el cuadrante en 8 subcuadrantes.
+\item En la figura \ref{fig:octree_insert} se puede observar que a medida que se incrementan puntos n$>$ 2 se va subdividiendo el cuadrante en 8 subcuadrantes.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.6\textwidth]{img/octree_insert.png}
 \caption{Inserción de puntos en octree}
 \label{fig:octree_insert}
 \end{figure}
-
+\clearpage
 \begin{itemize}
 \item En la figura \ref{fig:octree_insert_data} se puede observar la subdivision de los cuadrantes y los puntos contenidos en cada cuadrante.
 \end{itemize}
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{img/octree_insert_data.png}
+\includegraphics[width=0.9\textwidth]{img/octree_insert_data.png}
 \caption{Puntos insertados en octree}
 \label{fig:octree_insert_data}
 \end{figure}
@@ -256,6 +257,7 @@ Si S es el número de puntos en cada dimensión, entonces el número de nodos qu
 	\item Las estructuras octree son usadas mayormente para partir un espacio tridimensional, dividiéndolo recursivamente en ocho octantes, siendo análogas tridimensionales de los quadtree bidimensionales.
 	\item  El coste medio de insertar un nuevo nodo en un Octree es de O( log 8⁡n), siendo n su número de nodos. Asimismo, el coste por buscar una hoja es O( log 8⁡n).
         \end{itemize}
+    \clearpage
     \section{Referencias}
   \begin{enumerate}
     \item Tobler, W., & Chen, Z. T. (1986). A quadtree for global information storage. Geographical Analysis, 18(4), 360-371.
