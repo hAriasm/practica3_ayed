@@ -1,0 +1,272 @@
+%package list
+\documentclass{article}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{svg}
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\csemail}{vmachacaa@unsa.edu.pe}
+\newcommand{\csdocente}{Vicente Machaca Arceda}
+\newcommand{\cscurso}{Algoritmos y Estructura de Datos}
+\newcommand{\csuniversidad}{Universidad Nacional de San Agustín}
+\newcommand{\csescuela}{Maestría en Ciencias de la Computación}
+\newcommand{\cspracnr}{03}
+\newcommand{\cstema}{Quadtree}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_unsa}}}
+\fancyhead[C]{}
+\fancyhead[R]{\fontsize{7}{7}\selectfont	\csuniversidad \\ \csescuela \\ \textbf{\cscurso} }
+\fancyfoot[L]{Grupo N 02}
+\fancyfoot[C]{\cscurso}
+\fancyfoot[R]{Página \thepage}
+
+
+\begin{document}
+	
+	\vspace*{10px}
+	
+	\begin{center}	
+		\fontsize{17}{17} \textbf{ Práctica \cspracnr}
+	\end{center}
+	%\centerline{\textbf{\underline{\Large Título: Informe de revisión del estado del arte}}}
+	%\vspace*{0.5cm}
+	
+
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline
+			\textbf{DOCENTE} & \textbf{CARRERA}  & \textbf{CURSO}   \\
+			\hline
+			\csdocente & \csescuela & \cscurso    \\
+			\hline
+		\end{tabular}
+	\end{table}	
+	
+	
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline
+			\textbf{PRÁCTICA} & \textbf{TEMA}  & \textbf{DURACIÓN}   \\
+			\hline
+			\cspracnr & \cstema & --   \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	\section{Integrantes}
+        	\begin{itemize}
+        		\item Grupo N 2
+        		\item Integrantes:
+        		\begin{itemize}
+        			\item EDER ALONSO, AMPUERO ATAMARI
+        			\item HOWARD FERNANDO, ARANZAMENDI MORALES
+        			\item JOSE EDISON, PEREZ MAMANI
+        			\item HENRRY IVAN, ARIAS MAMANI
+        		\end{itemize}		
+        	\end{itemize}
+    \section{Repositorio GitHub}
+           URL Github: \href{https://github.com/hAriasm/Practica3_ayed}{Repositorio Práctica 3 AyED}
+	\section{Ejercicios}
+   \subsection{Quadtree}
+   \subsubsection{Definición}
+        \paragraph{}
+        Los quadtrees son árboles que se utilizan para almacenar de manera eficiente datos de puntos en un espacio bidimensional. En este árbol, cada nodo tiene como máximo cuatro hijos. Podemos construir un quadtree a partir de un área bidimensional siguiendo los siguientes pasos:
+\begin{enumerate}
+\item Divide el espacio bidimensional actual en cuatro cajas.
+\item Si una caja contiene uno o más puntos, cree un objeto secundario, almacenando en él el espacio bidimensional de la caja.
+\item Si un cuadro no contiene ningún punto, no cree un hijo para él
+\item Realice este proceso repetidamente hasta que todo el cuadro contenga uno o cero puntos.
+\end{enumerate}
+\begin{figure}[htbp]
+              \centering
+              \includegraphics[width=0.8\textwidth]{img/quadtree.png}
+              \caption{Representación gráfica del Quadtree}
+              \label{fig:quadtree}
+            \end{figure}
+Los Quadtrees se utilizan en la compresión de imágenes, donde cada nodo contiene el color promedio de cada uno de sus hijos. Cuanto más profundo atraviese el árbol, mayor será el detalle de la imagen. Los quadtrees también se utilizan para buscar nodos en un área bidimensional. Por ejemplo, si quisiera encontrar el punto más cercano a las coordenadas dadas, puede hacerlo usando quadtrees.
+
+\textbf{Función Insert:}
+
+Las funciones de inserción se utilizan para insertar un nodo en un Quad Tree existente. Esta función primero verifica si el nodo dado está dentro de los límites del quad actual. Si no es así, detenemos inmediatamente la inserción. Si está dentro de los límites, seleccionamos el elemento secundario apropiado para contener este nodo en función de su ubicación. Esta función es O(Log N) donde N es el tamaño de la distancia.
+
+
+\textbf{Función Search:}
+
+La función de búsqueda se utiliza para localizar un nodo en el cuadrante dado. También se puede modificar para devolver el nodo más cercano al punto dado. Esta función se implementa tomando el punto dado, comparándolo con los límites de los quads secundarios y recursivamente. Esta función es O(Log N) donde N es el tamaño de la distancia.
+
+\subsubsection{Cuadrantes en Quadtree: }
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/quadtree_cuadrante.png}
+\caption{Disposición de los cuadrantes en el Quadtree}
+\label{fig:quadtree_cuadrante}
+\end{figure}
+
+\subsubsection{Resultados de la practica: }
+
+\begin{itemize}
+\item En la siguiente figura se puede observar que a medida que se incrementan puntos n>4 se va subdividiendo el cuadrante en 4 subcuadrantes.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/quadtree_insert.png}
+\caption{Inserción de puntos}
+\label{fig:quadtree_insert}
+\end{figure}
+
+\begin{itemize}
+\item En la siguiente imagen se puede observar la subdivision de los cuadrantes y los puntos contenidos.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{img/quadtree_insert_data.png}
+\caption{Puntos insertados}
+\label{fig:quadtree_insert_data}
+\end{figure}
+
+\begin{itemize}
+\item En la siguiente figura se puede observar que se van resaltando los puntos dentro del area del cuadro verde.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/quadtree_search.png}
+\caption{Busqueda de puntos}
+\label{fig:quadtree_search}
+\end{figure}
+
+\subsection{Octree}
+\paragraph{}
+ El Octree es una estructura de datos de árbol en la que cada nodo interno puede tener como máximo 8 hijos. Al igual que el árbol binario que divide el espacio en dos segmentos, Octtree divide el espacio en ocho partes como máximo, lo que se denomina octanos. Se utiliza para almacenar el punto 3-D que ocupa una gran cantidad de espacio. Si todo el nodo interno del Octárbol contiene exactamente 8 hijos, entonces se llama Octárbol completo. También es útil para gráficos de alta resolución como gráficos de computadora en 3D.
+           
+El Octree se puede formar a partir de un volumen 3D siguiendo los siguientes pasos:
+           
+\begin{enumerate}
+
+\item Divide el espacio 3D actual en ocho cubos.
+\item Si algún cubo tiene más de un punto, divídalo más en 8 cubos.
+\item No divida el cubo que tiene uno o cero puntos
+\item Realice este proceso repetidamente hasta que todo el cuadro contenga uno o cero puntos.
+\end{enumerate}
+
+\begin{figure}[htbp]
+              \centering
+              \includegraphics[width=0.8\textwidth]{img/octree.png}
+              \caption{Representación gráfica del Octree}
+              \label{fig:octree}
+            \end{figure}
+
+Si S es el número de puntos en cada dimensión, entonces el número de nodos que se forman en Octtree viene dado por esta fórmula (S^{3} -1)/7.
+
+\textbf{Función Insert:}
+\begin{itemize}
+\item Para insertar un nodo en Octree, en primer lugar, verificamos si existe un nodo o no, si existe un nodo, luego regresamos, de lo contrario, vamos recursivamente.
+\item Primero, comenzamos con el nodo raíz y lo marcamos como actual, luego encontramos el nodo secundario en el que podemos almacenar el punto.
+\item Si el nodo está vacío, se reemplaza con el nodo que queremos insertar y convertirlo en un nodo hoja
+\item Si el nodo es el nodo hoja, conviértalo en un nodo interno y si es un nodo interno, vaya al nodo secundario. Este proceso se realiza de forma recursiva hasta que no se encuentra un nodo vacío.
+\item La complejidad temporal de esta función es O(log(N)) donde N es el número de nodos.
+\end{itemize}
+
+\textbf{Función Search:}
+\begin{itemize}
+\item Esta función se utiliza para buscar el punto existe es el árbol o no.
+\item Comience con el nodo raíz y busque recursivamente si se encuentra el nodo con el punto dado y luego devuelva verdadero, si se encuentra un nodo vacío o un punto límite o un punto vacío, devuelva falso.
+\item Si se encuentra un nodo interno, vaya a ese nodo. La complejidad temporal de esta función también es O(Log N) donde N es el número de nodos
+\end{itemize}
+
+\subsubsection{Cuadrantes en Octree: }
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/octree_cuadrante.png}
+\caption{Disposición de los cuadrantes en el Octree}
+\label{fig:octree_cuadrante}
+\end{figure}
+
+\subsubsection{Resultados de la practica: }
+
+\begin{itemize}
+\item En la siguiente figura se puede observar que a medida que se incrementan puntos n>2 se va subdividiendo el cuadrante en 8 subcuadrantes.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.6\textwidth]{img/octree_insert.png}
+\caption{Inserción de puntos en octree}
+\label{fig:octree_insert}
+\end{figure}
+
+\begin{itemize}
+\item En la siguiente imagen se puede observar la subdivision de los cuadrantes y los puntos contenidos.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth]{img/octree_insert_data.png}
+\caption{Puntos insertados en octree}
+\label{fig:octree_insert_data}
+\end{figure}
+  
+
+\section{Conclusiones}
+        \begin{itemize}
+                 \item Un árbol AVL se mantiene ordenado, pero hay mas rotaciones en las inserciones que en las eliminaciones, su costo para buscar, eliminar, insertar  es de O(Log n).
+                 \item Funciona de manera casi instantánea incluso con grandes volúmenes de datos. Ello se debe principalmente a la característica equilibrada del árbol, lo que permite tener acceso a todos los elementos con el mismo número de etapas, y en segundo lugar, al crecimiento logarítmico de la profundidad del árbol. Eso significa que la profundidad del árbol crece lentamente en comparación al número de hojas. Hay índices reales con millones de registros que tienen una profundidad de cuatro o cinco. Es poco común encontrar una profundidad de seis
+        \end{itemize}
+    \section{Referencias}
+  \begin{enumerate}
+    \item Tobler, W., & Chen, Z. T. (1986). A quadtree for global information storage. Geographical Analysis, 18(4), 360-371.
+    
+    \item Samet, H. (1984). The quadtree and related hierarchical data structures. ACM Computing Surveys (CSUR), 16(2), 187-260.
+    
+    \item Rojas Delgado, J. (2015). Estructura de datos espacial jerárquica para la indexación de agrupaciones de objetos geométricos (Bachelor's thesis, Universidad de las Ciencias Informáticas. Facultad 6).
+    
+    \item Castillo Oliva, A. D. (2018). Visualización de grandes volúmenes de datos empleando Octree (Bachelor's thesis, Universidad de las Ciencias Informáticas. Centro Vertex, Entornos Interactivos 3D. Facultad 4).
+    
+    \item Rivero, J. P. S., de la Hoz, Á. P., & Medina, M. Á. P. GENERACIÓN DE MALLAS APLICACIONES A LA INGENIERÍA.
+    
+    \item Brunet Crosa, P., Santisteve i Puyuelo, F., Vilanova, A., Chiarabini, L., Patow, G. A., Staffetti, E., & Surinyac, J. (1999). Estructuras geométricas jerárquicas para la modelización de escenas 3D.
+
+    \item \href{https://p5js.org/es/libraries/}{P5.js}
+    \item \href{https://www.geeksforgeeks.org/}{Geeksforgeeks}
+
+  \end{enumerate}
+
+\end{document}
