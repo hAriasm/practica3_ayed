@@ -113,37 +113,25 @@ class OcTree {
     if (this.points.length < this.capacity) {
       this.points.push(point);
       return true;
-    }
-
-    else {
+    } else {
       if (!this.divided) {
         this.subdivide();
       }
       if (this.northeastup.insert(point)) {
         return true;
-      }
-      else if (this.northeastdown.insert(point)) {
+      } else if (this.northeastdown.insert(point)) {
         return true;
-
-      }
-      else if (this.northwestup.insert(point)) {
+      } else if (this.northwestup.insert(point)) {
         return true;
-      }
-      else if (this.northwestdown.insert(point)) {
+      } else if (this.northwestdown.insert(point)) {
         return true;
-      }
-
-      else if (this.southeastup.insert(point)) {
+      } else if (this.southeastup.insert(point)) {
         return true;
-      }
-      else if (this.southeastdown.insert(point)) {
+      } else if (this.southeastdown.insert(point)) {
         return true;
-      }
-
-      else if (this.southwestup.insert(point)) {
+      } else if (this.southwestup.insert(point)) {
         return true;
-      }
-      else if (this.southwestdown.insert(point)) {
+      } else if (this.southwestdown.insert(point)) {
         return true;
       }
     }
@@ -155,10 +143,9 @@ class OcTree {
     strokeWeight(.75);
     noFill();
 
-    box(2 * this.surface.w, 2 * this.surface.h, 2 * this.surface.d)
+    box(2 * this.surface.w, 2 * this.surface.h, 2 * this.surface.d);
 
     if (this.divided) {
-
       translate(-this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
       this.northwestup.show(-1, -1, -1);
       translate(this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
@@ -190,9 +177,7 @@ class OcTree {
       translate(this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
       this.southeastdown.show(2, 0, 0);
       translate(-this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
-
     }
-
   }
 
   showPoints(showLabels) {
@@ -213,14 +198,23 @@ class OcTree {
     for (let p of this.points) {
       point(p.x - 200, p.y - 200, p.z - 200);
 
-      if(showLabels) {
+      if (showLabels) {
         textSize(12);
         fill(255, 255, 153);
         translate(0, 0, p.z - 200);
         text("(" + p.x + ", " + p.y + ", " + p.z + ")", p.x - 200, p.y - 200);
         translate(0, 0, 200 - p.z);
-      } 
+      }
     }
+  }
+
+  showCuboQuery() {
+    beginShape();
+    stroke(255);
+    fill(175, 31, 12);
+    translate(Math.random() * 200, Math.random() * 200, Math.random() * 200);
+    box(200, 200, 200);
+    endShape();
   }
 
   query(range, found) {

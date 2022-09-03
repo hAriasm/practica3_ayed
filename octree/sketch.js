@@ -33,10 +33,11 @@ function setup() {
 
 function draw() {
 
-  if (mouseIsPressed) {
+  if (mouseButton === LEFT) {
     let m = new Point(Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0));
     ot.insert(m);
-    mouseIsPressed = false;
+    //mouseIsPressed = false;
+    mouseButton = null;
   }
   background(0);
   ot.show(0, 0, 0);
@@ -46,4 +47,9 @@ function draw() {
   stroke(255);
   strokeWeight(1);
   orbitControl()
+
+  if (mouseButton === RIGHT) {
+    ot.showCuboQuery(); 
+    mouseButton = null;
+  }
 }
