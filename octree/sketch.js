@@ -38,16 +38,4 @@ function draw() {
   stroke(255);
   strokeWeight(1);
   orbitControl()
-  // box(400)
-  // translate(-100, -100, -100);
-  // stroke(255, 0, 0)
-  // box(200)
-  // stroke(0, 255, 0)
-  // translate(+200, +200, +200);
-  // box(200)
-  // stroke(0, 255, 255)
-  // translate(-200, -200, 0);
-  // box(200)
-
-  //rect(300, 300, 107, 92);
 }
