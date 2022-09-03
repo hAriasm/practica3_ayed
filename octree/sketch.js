@@ -25,7 +25,7 @@ function setup() {
   // ot.insert(new Point(1, 200, 1));
   // ot.insert(new Point(1, 1, 200));
   console.log(ot);
-  for (let i = 0; i < 6 ; i++) {
+  for (let i = 0; i < 10; i++) {
     let p = new Point(Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0));
     ot.insert(p);
   }
@@ -37,7 +37,6 @@ function draw() {
     let m = new Point(Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0));
     ot.insert(m);
     mouseIsPressed = false;
-    // mouseButton = null;
   }
   background(0);
   ot.show(0, 0, 0);
@@ -46,19 +45,17 @@ function draw() {
   stroke(255);
   strokeWeight(1);
   orbitControl()
-  
+
   // if (mouseButton === RIGHT) {
-    let range = new Cube(200, 200, 200, 100, 100, 100);
-    
-    stroke(255, 0, 0);
-    noFill();
-    translate(mouseX - 200, mouseY - 200, mouseX - 200);
-    box(range.w*2);
+  let range = new Cube(mouseX, mouseX, mouseX, 100, 100, 100);
 
-    let points = []; 
-    ot.query(range, points);
-    console.log("found: " + points.length);
+  stroke(255, 0, 0);
+  noFill();
+  translate(mouseX - 200, mouseY - 200, mouseX - 200);
+  box(range.w * 2);
 
-    // mouseButton = null;
-  // }
+  let points = [];
+  ot.query(range, points);
+  console.log("found: " + points.length);
+
 }

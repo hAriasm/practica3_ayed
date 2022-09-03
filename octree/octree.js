@@ -35,9 +35,7 @@ class Cube {
       range.x - range.w > this.x + this.w ||
       range.x + range.w < this.x - this.w ||
       range.y - range.h > this.y + this.h ||
-      range.y + range.h < this.y - this.h ||
-      range.z - range.d > this.z + this.d ||
-      range.z + range.d < this.z - this.d
+      range.y + range.h < this.y - this.h
     );
   }
 }
@@ -52,17 +50,6 @@ class OcTree {
 
   // divide el octree en 8 octrees
   subdivide() {
-    // Algoritmo
-    // 1: Crear 4 hijos: qt_northeast , qt_northwest , qt_southeast ,    qt_southwest;
-
-    // 2: Asignar los OcTree creados a cada hijo
-    //this.northeast = qt_northeast;
-    //this.northwest = qt_northwest;
-    //this.southeast = qt_southeast;
-    //this.southwest = qt_southwest;
-
-    // 3.- Hacer: this.divided <- true
-
     let x = this.surface.x;
     let y = this.surface.y;
     let z = this.surface.z;
@@ -94,18 +81,6 @@ class OcTree {
   }
 
   insert(point) {
-    // Algoritmo
-    // 1: Si el punto no esta en los limites ( surface ) del octree Return
-
-    // 2: Si ( this.points.length ) < ( this.capacity ),
-    // 2.1 Insertamos en el vector this.points
-    // Sino
-    // 2.2 Dividimos si aun no ha sido dividido
-    // 2.3 Insertamos recursivamente en los 4 hijos.
-    // this.northeast.insert ( point );
-    // this.northwest.insert ( point );
-    // this.southeast.insert ( point );
-    // this.southwest.insert ( point );
     if (!this.surface.contains(point)) {
       return false;
     }
