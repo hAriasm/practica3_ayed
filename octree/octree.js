@@ -150,68 +150,69 @@ class OcTree {
   }
 
   show(tx, ty, tz) {
-    stroke(255);
-   
-
-    for (let p of this.points) {
-      strokeWeight(7);
-      point(p.x - 200, p.y - 200, p.z - 200);
-    }
+    stroke(0, 255, 255);
 
     strokeWeight(0.5);
     noFill();
 
-    //rectMode(CENTER);
-    // rect(
-    //   this.surface.x,
-    //   this.surface.y,
-    //   this.surface.z,
-    //   this.surface.w * 2,
-    //   this.surface.h * 2,
-    //   this.surface.d * 2,
-    // );
-    // translate(this.surface.w*tx, this.surface.w*ty, this.surface.w*tz);
-    // console.log(this.surface.w + "," + this.surface.h + "," + this.surface.d);
-    box(2*this.surface.w, 2*this.surface.h, 2*this.surface.d)
-    
-    if (this.divided) {
-      strokeWeight(3);
-      stroke(0, 255, 0);
-      
-      translate(-this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
-      this.northwestup.show(-1, -1, -1);
-      translate(this.surface.w/2, this.surface.h/2, this.surface.d/2);
+    box(2 * this.surface.w, 2 * this.surface.h, 2 * this.surface.d)
 
-      translate(this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
+    if (this.divided) {
+
+      translate(-this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
+      this.northwestup.show(-1, -1, -1);
+      translate(this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
+
+      translate(this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
       this.northeastup.show(2, 0, 0);
-      translate(-this.surface.w/2, this.surface.h/2, this.surface.d/2);
-      
-      translate(this.surface.w/2, this.surface.h/2, -this.surface.d/2);
-      this.northeastdown.show(0 ,0 , -2);
-      translate(-this.surface.w/2, -this.surface.h/2, this.surface.d/2);
-      
-      translate(-this.surface.w/2, this.surface.h/2, -this.surface.d/2);
-      this.northwestdown.show(-2, 0, 0); 
-      translate(this.surface.w/2, -this.surface.h/2, this.surface.d/2);
-      
-      translate(this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      translate(-this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
+
+      translate(this.surface.w / 2, this.surface.h / 2, -this.surface.d / 2);
+      this.northeastdown.show(0, 0, -2);
+      translate(-this.surface.w / 2, -this.surface.h / 2, this.surface.d / 2);
+
+      translate(-this.surface.w / 2, this.surface.h / 2, -this.surface.d / 2);
+      this.northwestdown.show(-2, 0, 0);
+      translate(this.surface.w / 2, -this.surface.h / 2, this.surface.d / 2);
+
+      translate(this.surface.w / 2, -this.surface.h / 2, this.surface.d / 2);
       this.southeastup.show(0, 0, 2);
-      translate(-this.surface.w/2, this.surface.h/2, -this.surface.d/2);
-      
-      translate(-this.surface.w/2, -this.surface.h/2, this.surface.d/2);
+      translate(-this.surface.w / 2, this.surface.h / 2, -this.surface.d / 2);
+
+      translate(-this.surface.w / 2, -this.surface.h / 2, this.surface.d / 2);
       this.southwestup.show(-2, 0, 0);
-      translate(this.surface.w/2, this.surface.h/2, -this.surface.d/2);
-      
-      translate(-this.surface.w/2, this.surface.h/2, this.surface.d/2);
+      translate(this.surface.w / 2, this.surface.h / 2, -this.surface.d / 2);
+
+      translate(-this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
       this.southwestdown.show(0, 2, 0);
-      translate(this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
-      
-      translate(this.surface.w/2, this.surface.h/2, this.surface.d/2);
+      translate(this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
+
+      translate(this.surface.w / 2, this.surface.h / 2, this.surface.d / 2);
       this.southeastdown.show(2, 0, 0);
-      translate(-this.surface.w/2, -this.surface.h/2, -this.surface.d/2);
-      
+      translate(-this.surface.w / 2, -this.surface.h / 2, -this.surface.d / 2);
+
     }
 
+  }
+
+  showPoints() {
+    stroke(255);
+    strokeWeight(7);
+
+    if (this.divided) {
+      this.northwestup.showPoints();
+      this.northeastup.showPoints();
+      this.northeastdown.showPoints();
+      this.northwestdown.showPoints();
+      this.southeastup.showPoints();
+      this.southwestup.showPoints();
+      this.southwestdown.showPoints();
+      this.southeastdown.showPoints();
+    }
+
+    for (let p of this.points) {
+      point(p.x - 200, p.y - 200, p.z - 200);
+    }
   }
 
   query(range, found) {

@@ -1,10 +1,10 @@
 let ot;
 let count = 0;
-const WIDTH = 400; 
+const WIDTH = 400;
 function setup() {
-  let cnv = createCanvas(800, 800, WEBGL);
+  let cnv = createCanvas(WIDTH * 2, WIDTH * 2, WEBGL);
   // centre point and half of width and height
-  let surface = new Cube(200, 200, 200, 200, 200, 200);
+  let surface = new Cube(200, 200, 200, WIDTH / 2, WIDTH / 2, WIDTH / 2);
 
   // each leave just could have 4 elements
   ot = new OcTree(surface, 2);
@@ -17,14 +17,14 @@ function setup() {
   // ot.insert(new Point(1, 200, 1));
   // ot.insert(new Point(1, 1, 200));
   console.log(ot);
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 6; i++) {
     let p = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
     ot.insert(p);
   }
 }
 
 function draw() {
-  
+
   if (mouseIsPressed) {
     let m = new Point(Math.random() * WIDTH, Math.random() * WIDTH, Math.random() * WIDTH);
     ot.insert(m);
@@ -32,6 +32,7 @@ function draw() {
   }
   background(0);
   ot.show(0, 0, 0);
+  ot.showPoints();
   translate();
   noFill();
   stroke(255);
@@ -47,6 +48,6 @@ function draw() {
   // stroke(0, 255, 255)
   // translate(-200, -200, 0);
   // box(200)
-  
+
   //rect(300, 300, 107, 92);
 }
