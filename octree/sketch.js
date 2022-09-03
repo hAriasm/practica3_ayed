@@ -1,6 +1,6 @@
 let ot;
 let count = 0;
-let showLabels = true;
+let showLabels = false;
 const WIDTH = 400;
 
 function preload() {
