@@ -208,15 +208,6 @@ class OcTree {
     }
   }
 
-  showCuboQuery() {
-    beginShape();
-    stroke(255);
-    fill(175, 31, 12);
-    translate(Math.random() * 200, Math.random() * 200, Math.random() * 200);
-    box(200, 200, 200);
-    endShape();
-  }
-
   query(range, found) {
     if (!found) {
       found = [];

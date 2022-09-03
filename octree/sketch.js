@@ -1,6 +1,6 @@
 let ot;
 let count = 0;
-let showLabels = false;
+let showLabels = true;
 const WIDTH = 400;
 
 function preload() {
@@ -33,23 +33,32 @@ function setup() {
 
 function draw() {
 
-  if (mouseButton === LEFT) {
+  if (mouseIsPressed) {
     let m = new Point(Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0), Number(Math.random() * WIDTH).toFixed(0));
     ot.insert(m);
-    //mouseIsPressed = false;
-    mouseButton = null;
+    mouseIsPressed = false;
+    // mouseButton = null;
   }
   background(0);
   ot.show(0, 0, 0);
   ot.showPoints(showLabels);
-  translate();
   noFill();
   stroke(255);
   strokeWeight(1);
   orbitControl()
+  
+  // if (mouseButton === RIGHT) {
+    let range = new Cube(200, 200, 200, 100, 100, 100);
+    
+    stroke(255, 0, 0);
+    noFill();
+    translate(mouseX - 200, mouseY - 200, mouseX - 200);
+    box(range.w*2);
 
-  if (mouseButton === RIGHT) {
-    ot.showCuboQuery(); 
-    mouseButton = null;
-  }
+    let points = []; 
+    ot.query(range, points);
+    console.log("found: " + points.length);
+
+    // mouseButton = null;
+  // }
 }
